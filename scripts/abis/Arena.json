@@ -1,0 +1,369 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_agentFactoryAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_cadenceArch",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "battleId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "attacker",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "defender",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "damage",
+        "type": "uint256"
+      }
+    ],
+    "name": "Attack",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "battleId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "winner",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "loser",
+        "type": "uint256"
+      }
+    ],
+    "name": "BattleFinished",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "battleId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "agent1",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "agent2",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum Arena.ArenaType",
+        "name": "arena",
+        "type": "uint8"
+      }
+    ],
+    "name": "BattleStarted",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "agentFactory",
+    "outputs": [
+      {
+        "internalType": "contract IAgentFactory",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "agentInBattle",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "battleAgentHealth",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "battles",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "battleId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "enum Arena.ArenaType",
+        "name": "arena",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum Arena.BattleStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "winner",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "cadenceArch",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_battleId",
+        "type": "uint256"
+      }
+    ],
+    "name": "fight",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_battleId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBattle",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "battleId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "agentIds",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "agentHealths",
+            "type": "uint256[]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint8",
+                "name": "aggressiveness",
+                "type": "uint8"
+              },
+              {
+                "internalType": "enum Strategy",
+                "name": "strategy",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint8",
+                "name": "riskTolerance",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct BattleTactics[]",
+            "name": "tactics",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "enum Arena.ArenaType",
+            "name": "arena",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum Arena.BattleStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "winner",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Arena.BattleView",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getBattleCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_agent1Id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "aggressiveness",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum Strategy",
+            "name": "strategy",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "riskTolerance",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct BattleTactics",
+        "name": "_tactics1",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_agent2Id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "aggressiveness",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum Strategy",
+            "name": "strategy",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "riskTolerance",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct BattleTactics",
+        "name": "_tactics2",
+        "type": "tuple"
+      }
+    ],
+    "name": "startBattle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
