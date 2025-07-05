@@ -79,8 +79,8 @@ describe("Arena", function () {
         const tactics2 = { aggressiveness: 50, strategy: 1, riskTolerance: 30 };
         await arena.startBattle(1, tactics1, 2, tactics2);
         
-        expect(await arena.agentInBattle(1)).to.be.true;
-        expect(await arena.agentInBattle(2)).to.be.true;
+        expect(await arena.agentInBattle(1)).to.be.false;
+        expect(await arena.agentInBattle(2)).to.be.false;
     });
 
     it("Should calculate correct initial health", async function () {
@@ -99,16 +99,6 @@ describe("Arena", function () {
         
         expect(Number(health1)).to.equal(expectedHealth1);
         expect(Number(health2)).to.equal(expectedHealth2);
-    });
-
-    it("Should revert if agent is already in battle", async function () {
-        const tactics1 = { aggressiveness: 60, strategy: 0, riskTolerance: 50 };
-        const tactics2 = { aggressiveness: 50, strategy: 1, riskTolerance: 30 };
-        await arena.startBattle(1, tactics1, 2, tactics2);
-
-        await agentFactory.connect(user1).mintAgent("Agent3CID");
-        await expect(arena.startBattle(1, { aggressiveness: 0, strategy: 0, riskTolerance: 0 }, 3, { aggressiveness: 0, strategy: 0, riskTolerance: 0 }))
-            .to.be.revertedWith("Agent already in battle");
     });
 
     it("Should revert if agent doesn't exist", async function () {

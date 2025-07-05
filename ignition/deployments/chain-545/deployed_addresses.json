@@ -1,5 +1,5 @@
 {
-  "DeployArenaContracts#AgentFactory": "0xFF3260a3aab725b4BbBf9A94A57A5718196E5a73",
-  "DeployArenaContracts#ItemFactory": "0x0fD55d06B382C72d8b95f5Bf9Ae1682D079B79bB",
-  "DeployArenaContracts#Arena": "0x8ef7455e8d01C85Af8ed9CFcc0274f4125737e2f"
+  "DeployArenaContracts#AgentFactory": "0x8b0348a2EFA87dcBF2B5a179149E21708f62342f",
+  "DeployArenaContracts#ItemFactory": "0xa3D2d2C95De16864BF84A4be91FeC3C66997abdf",
+  "DeployArenaContracts#Arena": "0x644050Bd1200cf3692682d90BF145E84080dc0B4"
 }

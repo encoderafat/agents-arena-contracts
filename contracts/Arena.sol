@@ -57,7 +57,6 @@ contract Arena {
         uint256 _agent2Id,
         BattleTactics memory _tactics2
     ) public {
-        require(!agentInBattle[_agent1Id] && !agentInBattle[_agent2Id], "Agent already in battle");
         
         IAgentFactory.Agent memory agent1 = agentFactory.getAgent(_agent1Id);
         IAgentFactory.Agent memory agent2 = agentFactory.getAgent(_agent2Id);
@@ -67,8 +66,6 @@ contract Arena {
 
 
         uint256 battleId = battles.length;
-        agentInBattle[_agent1Id] = true;
-        agentInBattle[_agent2Id] = true;
 
         uint64 randomValue = ICadenceArch(cadenceArch).revertibleRandom();
         ArenaType arenaType = ArenaType(randomValue % 3);
@@ -105,6 +102,10 @@ contract Arena {
 
         uint256 agent1Id = currentBattle.agentIds[0];
         uint256 agent2Id = currentBattle.agentIds[1];
+        require(!agentInBattle[agent1Id] && !agentInBattle[agent2Id], "Agent already in battle");
+
+        agentInBattle[agent1Id] = true;
+        agentInBattle[agent2Id] = true;
         
         IAgentFactory.Agent memory agent1 = agentFactory.getAgent(agent1Id);
         IAgentFactory.Agent memory agent2 = agentFactory.getAgent(agent2Id);
